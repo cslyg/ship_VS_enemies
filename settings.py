@@ -1,5 +1,8 @@
 # coding=utf-8
+import json
+
 import random_truple
+
 class Settings:
     def __init__(self):
         # coding=utf-8
@@ -19,6 +22,13 @@ class Settings:
         self.speedup = 1.05
         # coding=utf-8
         self.score = "0"
+
+        # self.high_score = str(dict_score["得分"])
+        self.high_score = "0"
+
+
+
+
     def increse_speed(self):
         """提高速度"""
 
@@ -31,6 +41,8 @@ class Settings:
         self.enemy_speedx = 0.1
         self.enemy_speedy = 0.08
         self.bullet_speed = 0.5
+        self.score = "0"
+
 
 
 

@@ -1,3 +1,4 @@
+import json
 
 import pygame,gf
 from settings import Settings
@@ -25,6 +26,11 @@ scoreboard = Scoreboard(settings,screen)
 
 
 pygame.display.set_caption("飞机大战")
+fp = open("record.json","r")
+dict1 = json.load(open("record.json","r"))
+settings.high_score = dict1["得分"]
+print(settings.high_score)
+fp.close()
 
 
 

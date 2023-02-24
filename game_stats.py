@@ -1,4 +1,7 @@
-import sys
+import sys,tkinter.messagebox as mgb
+import tkinter
+root = tkinter.Tk()
+root.withdraw()
 
 import pygame,time
 class GameStats:
@@ -12,8 +15,8 @@ class GameStats:
         """c初始化必要信息"""
         if self.settings.ship_num <= 0:
             self.game_active = False
-            confirm = input("游戏结束，是否重新开始? ,输入Y/N\n：")
-            if confirm == "y":
+
+            if mgb.askyesno("提示","游戏结束了，你还要玩吗？"):
                 self.game_active = True
                 settings.initialize()
                 self.settings.ship_num = self.settings.ship_limit

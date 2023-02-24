@@ -1,7 +1,10 @@
+import json
+
 import pygame,sys
 from bullet import Bullet
 from enemy import Enemy
 from ship import Ship
+import tkinter.messagebox as mgb
 
 def check_event(ship,bullets,settings,stats,play_button):
     # 检查输入并给出反馈
@@ -34,7 +37,10 @@ def check_event(ship,bullets,settings,stats,play_button):
                 ship.move_down =True
 
 
+
+
             elif event.key == pygame.K_SPACE:
+                stats.game_active = True
                 if len(bullets) <4:
                     new_bullet = Bullet(ship,settings)
                     bullets.add(new_bullet)
@@ -59,7 +65,10 @@ def check_event(ship,bullets,settings,stats,play_button):
             elif event.key == pygame.K_q:
                 sys.exit()
         if event.type == pygame.QUIT:
-            sys.exit()
+            if mgb.askyesno("提示","是否要退出游戏？"):
+                sys.exit()
+            else:
+                pass
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x,mouse_y = pygame.mouse.get_pos()
             check_play_button(stats,play_button,mouse_x,mouse_y)
@@ -153,9 +162,31 @@ def hit_screen(screen,enemies):
 
 def score_stats(settings,enemies,bullets):
     if pygame.sprite.groupcollide(enemies,bullets,True,True):
+        fp = open("record.json", "r")
+        dict1 = json.load(fp)
+        settings.high_score = dict1["得分"]
+        fp.close()
+
         int_score = int(settings.score)
         int_score += 1
         settings.score = str(int_score)
+        if int(settings.high_score) <= int_score:
+
+            settings.high_score = settings.score
+            print(settings.high_score + "已经更新最高分")
+            fp= open("record.json","w")
+            record = {}
+            record["得分"] = settings.high_score
+            json.dump(record,fp)
+            fp.close()
+
+
+
+
+
+
+
+
 
 
 
