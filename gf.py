@@ -40,10 +40,10 @@ def check_event(ship,bullets,settings,stats,play_button):
 
 
             elif event.key == pygame.K_SPACE:
-                stats.game_active = True
                 if len(bullets) <4:
                     new_bullet = Bullet(ship,settings)
                     bullets.add(new_bullet)
+                    pygame.mixer.Sound.play(settings.bullet_sound)
                 # print(len(bullets))
 
 
@@ -162,6 +162,7 @@ def hit_screen(screen,enemies):
 
 def score_stats(settings,enemies,bullets):
     if pygame.sprite.groupcollide(enemies,bullets,True,True):
+        pygame.mixer.Sound.play(settings.collision_sound)
         fp = open("record.json", "r")
         dict1 = json.load(fp)
         settings.high_score = dict1["得分"]

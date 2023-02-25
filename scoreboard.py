@@ -54,9 +54,9 @@ class Scoreboard:
         self.text_rect.left = self.rect.left
         self.text_rect.top = 20
         #最高文字的位置
-        self.high_text_image = self.font.render("high score:", True, self.text_color)
+        self.high_text_image = self.font.render("highest score:", True, self.text_color)
         self.high_text_rect = self.high_text_image.get_rect()
-        self.high_text_rect.left = self.high_rect.left-80
+        self.high_text_rect.left = self.high_rect.left-120
 
         
         

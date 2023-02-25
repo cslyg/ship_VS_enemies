@@ -5,7 +5,7 @@ class Ship(pygame.sprite.Sprite):
         self.screen = screen
         self.settings = settings
         # 载入图片并获取其外接矩形
-        self.image = pygame.image.load(r"E:\桌面\feiji2.png")
+        self.image = pygame.image.load(r"sound\feiji2.png")
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 

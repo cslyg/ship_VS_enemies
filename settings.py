@@ -1,10 +1,17 @@
 # coding=utf-8
 import json
+import pygame,os
+
+
 
 import random_truple
 
 class Settings:
     def __init__(self):
+        pygame.init()
+        pygame.font.init()
+        pygame.mixer.init()
+
         # coding=utf-8
         self.bg_color = (random_truple.rn(3))
         self.screen_size = (1200,800)
@@ -22,6 +29,8 @@ class Settings:
         self.speedup = 1.05
         # coding=utf-8
         self.score = "0"
+        self.bullet_sound = pygame.mixer.Sound(os.path.join("sound\子弹发射.wav.wav"))
+        self.collision_sound = pygame.mixer.Sound(os.path.join("sound\爆炸音效.wav"))
 
         # self.high_score = str(dict_score["得分"])
         self.high_score = "0"

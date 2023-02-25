@@ -8,7 +8,7 @@ class Enemy(pygame.sprite.Sprite):
         self.screen_rect = screen.get_rect()
         self.settings = settings
         # 载入图片并获取其外接矩形
-        self.image = pygame.image.load(r"E:\桌面\enemy2.png")
+        self.image = pygame.image.load(r"sound\enemy2.png")
         self.rect = self.image.get_rect()
 
         # self.rect.centerx = self.screen_rect.centerx
